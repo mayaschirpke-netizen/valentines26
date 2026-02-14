@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>She Said Yes 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      background: linear-gradient(180deg, #2b1055, #5b2a86, #ff6ec7 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      animation: boot 0.8s ease-out;
+    }
+
+    @keyframes boot {
+      0% { transform: scaleY(0.05); opacity: 0; filter: brightness(3); }
+      40% { transform: scaleY(1.2); opacity: 1; filter: brightness(1.5); }
+      70% { transform: scaleY(0.95); filter: brightness(1.2); }
+      100% { transform: scaleY(1); filter: brightness(1); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      max-width: 500px;
+      position: relative;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: subtleRGB 3s infinite alternate ease-in-out;
+    }
+
+    p {
+      font-size: 10px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      animation: subtleRGB 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes subtleRGB {
+      0% {
+        text-shadow:
+          -1px 0 rgba(255,0,150,0.6),
+          1px 0 rgba(0,255,255,0.6);
+      }
+      100% {
+        text-shadow:
+          1px 0 rgba(255,0,150,0.6),
+          -1px 0 rgba(0,255,255,0.6);
+      }
+    }
+
+    img {
+      width: 160px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(255,105,180,0.5);
+    }
+
+    @keyframes strongRGB {
+      0% {
+        text-shadow:
+          -2px 0 rgba(255,0,180,0.9),
+          2px 0 rgba(0,255,255,0.9),
+          0 0 8px rgba(255,105,180,0.7);
+      }
+      100% {
+        text-shadow:
+          2px 0 rgba(255,0,180,0.9),
+          -2px 0 rgba(0,255,255,0.9),
+          0 0 14px rgba(255,105,180,1);
+      }
+    }
+
+    .highlight {
+      animation: strongRGB 2s infinite alternate ease-in-out;
+    }
+
+    /* ACHIEVEMENT POPUP */
+    .achievement {
+      position: fixed;
+      top: -200px;
+      left: 30px;
+      width: 320px;
+      background: linear-gradient(135deg, #1a0033, #5b2a86);
+      border: 2px solid #ff6ec7;
+      box-shadow: 0 0 20px rgba(255,110,199,0.8);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+      font-size: 8px;
+      z-index: 5;
+      transition: top 0.6s ease, opacity 0.6s ease;
+      opacity: 0;
+    }
+
+    .achievement.show {
+      top: 30px;
+      opacity: 1;
+    }
+
+    .achievement.hide {
+      top: -200px;
+      opacity: 0;
+    }
+
+    .achievement-title {
+      font-size: 9px;
+      margin-bottom: 10px;
+      animation: strongRGB 2s infinite alternate ease-in-out;
+    }
+
+    .achievement-bar {
+      height: 6px;
+      background: #2b1055;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .achievement-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff6ec7, #9f2fff);
+      animation: loadBar 2s forwards;
+    }
+
+    @keyframes loadBar {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    .stars {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .stars span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px white;
+      animation: blink 1.5s infinite ease-in-out;
+    }
+
+    .stars span:nth-child(1) { top: 10px; left: 20px; animation-delay: 0s; }
+    .stars span:nth-child(2) { top: 40px; left: 80px; animation-delay: 0.5s; }
+    .stars span:nth-child(3) { top: 70px; left: 30px; animation-delay: 1s; }
+    .stars span:nth-child(4) { top: 20px; left: 60px; animation-delay: 0.8s; }
+    .stars span:nth-child(5) { top: 90px; left: 90px; animation-delay: 1.2s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    .crt::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.05) 0px,
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      z-index: 3;
+      animation: flicker 0.15s infinite;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { opacity: 0.95; }
+    }
+
+  </style>
+</head>
+<body class="crt">
+  <div class="card">
+    <h1 class="highlight">IT'S A DATE 💕</h1>
+    <p>
+      you just unlocked <br><br>
+      valentine's day 2026 💿✨<br><br>
+      schau mal vor die Tür;)
+    </p>
+  </div>
+
+  <div class="achievement" id="achievement">
+    <div class="achievement-title">🏆 ACHIEVEMENT UNLOCKED</div>
+    <div>Valentine Secured 💖</div>
+    <div class="achievement-bar">
+      <div class="achievement-fill"></div>
+    </div>
+  </div>
+
+  <div class="stars">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const achievement = document.getElementById("achievement");
+      setTimeout(() => {
+        achievement.classList.add("show");
+      }, 800);
+
+      // Auto hide like Xbox notification (stays longer now)
+      setTimeout(() => {
+        achievement.classList.remove("show");
+        achievement.classList.add("hide");
+      }, 7500);
+    });
+  </script>
+</body>
+</html>
